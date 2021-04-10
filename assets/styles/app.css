@@ -1,0 +1,83 @@
+/* Commun */
+body {
+    background-color: lightgray;
+}
+
+button {
+	cursor: pointer;
+	margin: 10px;
+	margin-left: 30px;
+	padding: 3px;
+}
+a {
+	margin-left: 15px;
+}
+
+.conteneur {
+	display: flex!important;
+}
+
+.textCenter {
+	text-align: center!important;
+}
+.textLeft {
+	text-align: left!important;
+}
+.textRight {
+	text-align: right!important;
+}
+
+.bordureNoir {
+	border: 1px solid black;
+}
+
+.modifier, .supprimer {
+	cursor: pointer;
+	font-size: 10px;
+}
+
+/* Formulaire */
+h1 {
+	margin: 10px;
+}
+.boutonValid {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-left: 50px;
+}
+
+.boutonValidCommande {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-left: 50px;
+	padding: 10px;
+	font-weight: bold!important;
+	background-color: lightgreen!important;
+}
+
+
+/* Graph */
+.bgGreen {
+	background-color: lightgreen;
+	border: 1px solid black;
+}
+.graph {
+	margin: 20px;
+	padding: 20px;
+}
+
+
+/* Tableau */
+table {
+	border-width:1px; 
+	border-style:solid; 
+	border-color:black;
+	margin: 10px;
+ }
+
+td { 
+	border-width:1px;
+	border-style:solid; 
+	border-color:red;
+	padding: 5px;
+}

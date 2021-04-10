@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div id="btnAdd" class="btn boutonValid">{{ button_label|default('Ajouter une ligne') }}</div>
+    <div id="btnRaz" class="btn boutonValid">{{ button_label|default('Remise à zéro du formulaire') }}</div>
+	<button id="btnValid" class="btn boutonValidCommande" value='{{ idCommande is defined ? idCommande : '' }}' type='submit' data-oui=''>Enregistrer la commande</button>
+    <p>Total: <span id="totalLigne">0</span> €</p>
+{{ form_end(form) }}

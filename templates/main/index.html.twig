@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice IT SIS{% endblock %}
+
+{% block body %}
+
+
+	<p class='textCenter'>
+		Bonjour "{{ utilisateur }}" et bienvenue sur l'application d'exercice pour IT SIS.
+	</p>
+<div class="conteneur">
+	<div class="bgGreen graph">
+		<p>Tableau par répartition des commandes selon le Type</p>
+		<p class="textCenter">QUANTITÉ</p>
+		
+		<ul>
+			{% for key, datas in graphTypeQuantite %}
+				<li>Commande n° {{ key }}</li>
+				<ul>
+				{% for type, data in datas %}
+					<li>{{ type|capitalize }} => {{ data }}</li>
+				{% endfor %}
+				</ul>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="bgGreen graph">
+		<p>Tableau par répartition des commandes selon le Type</p>
+		<p class="textCenter">PRIX</p>
+		
+		<ul>
+			{% for key, datas in graphTypePrice %}
+				<li>Commande n° {{ key }}</li>
+				<ul>
+				{% for type, data in datas %}
+					<li>{{ type|capitalize }} => {{ data }}</li>
+				{% endfor %}
+				</ul>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+<div>
+	<a href="/commande/new">
+		<button>Ajouter une commande</button>
+	</a>
+	<table>
+		<th>N° de commande</th>
+		<th>Date</th>
+		<th>Commentaire</th>
+		<th>Type</th>
+		<th>Produit</th>
+		<th>Quantité</th>
+		<th>Prix</th>
+
+		{% for ligneCurrentMonth in lignesCurrentMonth %}
+			<tr>
+				{% if ligneCurrentMonth.number is defined %}
+					<td width="50" class="textCenter" rowspan="{{ ligneCurrentMonth.number }}">
+						{{ ligneCurrentMonth.Commande }}
+						<a href="/commande/{{ ligneCurrentMonth.Commande }}/edit">
+							<button>Modifier la commande</button>
+						</a>
+					</td>
+					<td width="80" class="textCenter" rowspan="{{ ligneCurrentMonth.number }}">{{ ligneCurrentMonth.date|date("d/m/Y") }}</td>
+				{% endif %}
+				<td width="250" class="textLeft">{{ ligneCurrentMonth.Comment|capitalize }}</td>
+				<td width="100" class="textLeft">{{ ligneCurrentMonth.Type|capitalize }}</td>
+				<td width="100" class="textLeft">{{ ligneCurrentMonth.Produit|capitalize }}</td>
+				<td width="50" class="textRight">{{ ligneCurrentMonth.quantite }}</td>
+				<td width="50" class="textRight">{{ ligneCurrentMonth.Prix }}€</td>
+			</tr>
+		{% endfor %}
+<div>
+
+{% endblock %}

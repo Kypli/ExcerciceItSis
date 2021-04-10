@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"","routes":{"ajax_produits_options_by_type":{"tokens":[["text","\/ajax\/commande\/produits"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":["POST","GET"],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http","locale":[]});
