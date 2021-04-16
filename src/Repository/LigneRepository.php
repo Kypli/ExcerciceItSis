@@ -81,7 +81,7 @@ class LigneRepository extends ServiceEntityRepository
 	}
 
     /**
-    * retourne la valeur total du prix
+    * Retourne la valeur total du prix
     */
     public function ArrayPrice($list)
     {
