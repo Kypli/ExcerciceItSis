@@ -20,7 +20,36 @@ class LigneRepository extends ServiceEntityRepository
 	}
 
 	/**
-	 * Datas Current month by user
+	 * All lignes by commandes from user
+	 */
+	public function numberLignesByCommandes($idUser){
+
+		return $this->createQueryBuilder('l')
+			->leftjoin('l.produit', 'p')
+			->leftjoin('p.type', 't')
+			->leftjoin('l.commande', 'c')
+			->leftjoin('c.user', 'u')
+			->where("c.user = :idUser")
+			->andWhere('SUBSTRING(c.date,6,2) = :currentMonth')
+			->setParameter('idUser', $idUser)
+			->setParameter('currentMonth', date('m'))
+			->select(
+				"c.id",
+				"COUNT(c.id) as numberOfLignes",
+			)
+			->groupBy('c.id')
+			->orderBy('c.date', 'DESC')
+			->addOrderBy('c.id', 'DESC')
+			->addOrderBy('t.libelle', 'DESC')
+			->addOrderBy('p.name', 'DESC')
+			->getQuery()
+			->getResult()
+		;
+	}
+
+	/**
+	 * Lignes by current month and user with commande, type and produit
+	 * Order must be the same as $this->numberLignesByCommandes()
 	 */
 	public function lignesCurrentMonth($idUser){
 
@@ -33,15 +62,15 @@ class LigneRepository extends ServiceEntityRepository
 			->andWhere('SUBSTRING(c.date,6,2) = :currentMonth')
 			->setParameter('idUser', $idUser)
 			->setParameter('currentMonth', date('m'))
-			->select([
-				"c.id as Commande",
-				"t.libelle as Type",
-				"p.name as Produit",
-				"p.price as Prix",
+			->select(
+				"c.id as commande",
+				"t.libelle as type",
+				"p.name as produit",
+				"p.price as price",
 				"l.quantite",
-				"l.comment as Comment",
+				"l.comment as comment",
 				"c.date",
-			])
+			)
 			->orderBy('c.date', 'DESC')
 			->addOrderBy('c.id', 'DESC')
 			->addOrderBy('t.libelle', 'DESC')

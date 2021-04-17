@@ -59,24 +59,48 @@
 			<th>Quantité</th>
 			<th>Prix</th>
 
-			{% for ligneCurrentMonth in lignesCurrentMonth %}
+			{% set i = 0 %}
+			{% set currentCommande = null %}
+			{% for key, ligneCurrentMonth in lignesCurrentMonth %}
 				<tr>
-					{% if ligneCurrentMonth.number is defined %}
-						<td width="50" class="textCenter" rowspan="{{ ligneCurrentMonth.number }}">
-							{{ ligneCurrentMonth.Commande }}
-							<a href="/commande/{{ ligneCurrentMonth.Commande }}/edit">
+					{% if
+						numberLignesByCommandes[i].id is defined and
+						ligneCurrentMonth.commande == numberLignesByCommandes[i].id
+					 %}
+					 	{# N° Commande #}
+						<td
+							width="50"
+							class="textCenter"
+							{% if numberLignesByCommandes[i].numberOfLignes > 1 %}
+								rowspan="{{ numberLignesByCommandes[i].numberOfLignes }}"
+							{% endif %}
+						>
+							{{ ligneCurrentMonth.commande }}
+							<a href="/commande/{{ ligneCurrentMonth.commande }}/edit">
 								<button>Modifier la commande</button>
 							</a>
 						</td>
-						<td width="80" class="textCenter" rowspan="{{ ligneCurrentMonth.number }}">{{ ligneCurrentMonth.date|date("d/m/Y") }}</td>
+
+						{# Date #}
+						<td
+							width="80"
+							class="textCenter"
+							{% if numberLignesByCommandes[i].numberOfLignes > 1 %}
+								rowspan="{{ numberLignesByCommandes[i].numberOfLignes }}"
+							{% endif %}
+						>
+							{{ ligneCurrentMonth.date|date("d/m/Y") }}
+						</td>
+						{% set i = i + 1 %}
 					{% endif %}
-					<td width="250" class="textLeft">{{ ligneCurrentMonth.Comment|capitalize }}</td>
-					<td width="100" class="textLeft">{{ ligneCurrentMonth.Type|capitalize }}</td>
-					<td width="100" class="textLeft">{{ ligneCurrentMonth.Produit|capitalize }}</td>
+					<td width="250" class="textLeft">{{ ligneCurrentMonth.comment|capitalize }}</td>
+					<td width="100" class="textLeft">{{ ligneCurrentMonth.type|capitalize }}</td>
+					<td width="100" class="textLeft">{{ ligneCurrentMonth.produit|capitalize }}</td>
 					<td width="50" class="textRight">{{ ligneCurrentMonth.quantite }}</td>
-					<td width="50" class="textRight">{{ ligneCurrentMonth.Prix }}€</td>
+					<td width="50" class="textRight">{{ ligneCurrentMonth.price }}€</td>
 				</tr>
 			{% endfor %}
+		</table>
 	<div>
 
 {% endblock %}
