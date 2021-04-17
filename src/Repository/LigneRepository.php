@@ -20,7 +20,8 @@ class LigneRepository extends ServiceEntityRepository
 	}
 
 	/**
-	 * All lignes by commandes from user
+	 * All lignes by commandes from 
+	 * Condition & Order must be the same as $this->lignesCurrentMonth()
 	 */
 	public function numberLignesByCommandes($idUser){
 
@@ -49,7 +50,7 @@ class LigneRepository extends ServiceEntityRepository
 
 	/**
 	 * Lignes by current month and user with commande, type and produit
-	 * Order must be the same as $this->numberLignesByCommandes()
+	 * Condition & Order must be the same as $this->numberLignesByCommandes()
 	 */
 	public function lignesCurrentMonth($idUser){
 
