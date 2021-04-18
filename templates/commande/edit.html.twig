@@ -10,6 +10,10 @@
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
 		crossorigin="anonymous"
 	>
+
+	{# Webpack #}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('form') }}
 {% endblock %}
 
 {% block javascripts %}
@@ -28,6 +32,10 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"
 	></script>
+
+	{# Webpack #}
+	{{ encore_entry_script_tags('app') }}
+	{{ encore_entry_script_tags('form') }}
 {% endblock %}
 
 {% block body %}

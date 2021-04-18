@@ -2,6 +2,31 @@
 
 {% block title %}Exercice IT SIS{% endblock %}
 
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	{# CHART.JS CDN #}
+	<link href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
+
+	{# Webpack #}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('main') }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+	{# CHART.JS CDN #}
+	<script	src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+	{# Webpack #}
+	{{ encore_entry_script_tags('app') }}
+	{{ encore_entry_script_tags('main') }}
+	{{ encore_entry_script_tags('chart') }}
+{% endblock %}
+
+
 {% block body %}
 
 	{# Accueil #}
@@ -16,6 +41,8 @@
 		<div class="bgGreen graph">
 			<p>Tableau par répartition des commandes selon le Type</p>
 			<p class="textCenter">QUANTITÉ</p>
+
+			<canvas id="myChart" width="400" height="400"></canvas>
 			
 			<ul>
 				{% for datas in graphsByType %}

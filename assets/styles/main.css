@@ -1,0 +1,27 @@
+/* Graph */
+.bordureNoir {
+	border: 1px solid black;
+}
+.bgGreen {
+	background-color: lightgreen;
+	border: 1px solid black;
+}
+.graph {
+	margin: 20px;
+	padding: 20px;
+}
+
+/* Tableau */
+table {
+	border-width:1px; 
+	border-style:solid; 
+	border-color:black;
+	margin: 10px;
+ }
+
+td { 
+	border-width:1px;
+	border-style:solid; 
+	border-color:red;
+	padding: 5px;
+}
