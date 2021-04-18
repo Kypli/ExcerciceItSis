@@ -20,6 +20,13 @@
 	{# CHART.JS CDN #}
 	<script	src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
+	{# Jquery #}
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"
+	></script>
+
 	{# Webpack #}
 	{{ encore_entry_script_tags('app') }}
 	{{ encore_entry_script_tags('main') }}
@@ -38,37 +45,17 @@
 	<div class="conteneur">
 
 		{# Graph Quantité #}
-		<div class="bgGreen graph">
+		<div id="graphs" class="bgGreen graph" data-graphs="{{ graphsByTypeJson }}">
 			<p>Tableau par répartition des commandes selon le Type</p>
 			<p class="textCenter">QUANTITÉ</p>
-
-			<canvas id="myChart" width="400" height="400"></canvas>
-			
-			<ul>
-				{% for datas in graphsByType %}
-
-					<li>{{ datas['type']|capitalize }}</li>
-					<ul>
-						<li>{{ datas['quantite'] }} produit{{ datas['quantite']|length > 1 ? 's' : '' }}</li>
-					</ul>
-				{% endfor %}
-			</ul>
+			<canvas id="graphQtite" width="400" height="400"></canvas>
 		</div>
 
 		{# Graph Price #}
 		<div class="bgGreen graph">
 			<p>Tableau par répartition des commandes selon le Type</p>
 			<p class="textCenter">PRIX</p>
-			
-			<ul>
-				{% for datas in graphsByType %}
-
-					<li>{{ datas['type']|capitalize }}</li>
-					<ul>
-						<li>{{ datas['price'] }} €</li>
-					</ul>
-				{% endfor %}
-			</ul>
+			<canvas id="graphPrice" width="400" height="400"></canvas>
 		</div>
 	</div>
 

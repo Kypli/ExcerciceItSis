@@ -24,7 +24,7 @@ class MainController extends AbstractController
 			'utilisateur' => $user->getName(),
 			'numberLignesByCommandes' => $em->getRepository('App:Ligne')->numberLignesByCommandes($user->getId()),
 			'lignesCurrentMonth' => $em->getRepository('App:Ligne')->lignesCurrentMonth($user->getId()),
-			'graphsByType' => $em->getRepository('App:Type')->graphsByType($user->getId()),
+			'graphsByTypeJson' => json_encode($em->getRepository('App:Type')->graphsByType($user->getId())),
 			'controller_name' => 'MainController',
 		]);
 	}
