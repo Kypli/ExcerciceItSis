@@ -8,9 +8,9 @@ ajax_produits_options_by_type:
     options:
         expose: true
 
-ajax_lignes_by_commande:
-    path:     /ajax/lignes/commande
-    controller: App\Controller\CommandeController::lignesByCommandeAction
+ajax_type_by_product:
+    path:     /ajax/typeByProduct
+    controller: App\Controller\CommandeController::typeByProduitAction
     methods: [POST, GET]
     options:
         expose: true

@@ -1,7 +1,21 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <div id="btnAdd" class="btn boutonValid">{{ button_label|default('Ajouter une ligne') }}</div>
-    <div id="btnRaz" class="btn boutonValid">{{ button_label|default('Remise à zéro du formulaire') }}</div>
-	<button id="btnValid" class="btn boutonValidCommande" value='{{ idCommande is defined ? idCommande : '' }}' type='submit' data-oui=''>Enregistrer la commande</button>
-    <p>Total: <span id="totalLigne">0</span> €</p>
+	{# {{ form_widget(form) }} #}
+
+	{# {{ form_row(form.quantite) }} #}
+
+	<h3>Lignes</h3>
+	<ul class="lignes" data-prototype="{{ form_widget(form.lignes.vars.prototype)|e('html_attr') }}">
+		{% for ligne in form.lignes %}
+			<li>
+				{{ form_row(ligne.type) }}
+				{{ form_row(ligne.produit) }}
+				{{ form_row(ligne.quantite) }}
+				{{ form_row(ligne.comment) }}
+			</li>
+		{% endfor %}
+	</ul>
+
+	<button id="btnAddu" class="btn boutonValid add_item_link" data-collection-holder-class="lignes">{{ button_label|default('Ajouter une ligne') }}</button>
+	<button id="btnValid" class="btn boutonValidCommande" type='submit'>Enregistrer la commande</button>
 {{ form_end(form) }}
+

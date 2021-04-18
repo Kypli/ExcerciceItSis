@@ -78,6 +78,7 @@
 							<a href="/commande/{{ ligneCurrentMonth.commande }}/edit">
 								<button>Modifier la commande</button>
 							</a>
+							{{ include('commande/_delete_form.html.twig', { 'id': ligneCurrentMonth.commande }) }}
 						</td>
 
 						{# Date #}

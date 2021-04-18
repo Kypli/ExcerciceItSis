@@ -17,7 +17,7 @@ class Commande
 	private $user;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="Ligne", mappedBy="commande")
+	 * @ORM\OneToMany(targetEntity="Ligne", mappedBy="commande", cascade={"persist"})
 	 */
 	private $lignes;
 
@@ -42,6 +42,8 @@ class Commande
 	 * Construct
 	 */
 	public function __construct() {
+		$date = new \DateTime();
+		$this->date = $date;
 		$this->lignes = new ArrayCollection();
 	}
 

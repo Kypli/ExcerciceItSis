@@ -40,12 +40,23 @@ a {
 h1 {
 	margin: 10px;
 }
+
+.selectType
+{
+	text-transform:capitalize;
+}
+
 .boutonValid {
 	margin-top: 25px;
 	margin-bottom: 25px;
 	margin-left: 50px;
 }
-
+.boutonDelete {
+	margin-top: 20px!important;
+	margin-bottom: 30px;
+	margin-left: 10px;
+	padding: 10px;
+}
 .boutonValidCommande {
 	margin-top: 25px;
 	margin-bottom: 25px;
